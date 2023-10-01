@@ -1,3 +1,4 @@
+
 let is24Hour = false;
 
 function updateTime() {
