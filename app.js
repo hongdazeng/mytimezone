@@ -1,4 +1,3 @@
-
 let is24Hour = false;
 
 function updateTime() {
@@ -9,12 +8,16 @@ function updateTime() {
 
     const currentTime = new Date();
 
+    // Get date and time for Beijing
+    const beijingDate = currentTime.toLocaleDateString('en-US', { timeZone: 'Asia/Shanghai', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const beijingTime = currentTime.toLocaleTimeString('en-US', options);
-    options.timeZone = 'America/Chicago';
-    const chicagoTime = currentTime.toLocaleTimeString('en-US', options);
+    document.getElementById('beijing-time').textContent = `${beijingDate}, ${beijingTime}`;
 
-    document.getElementById('beijing-time').textContent = beijingTime;
-    document.getElementById('chicago-time').textContent = chicagoTime;
+    // Get date and time for Chicago
+    options.timeZone = 'America/Chicago';
+    const chicagoDate = currentTime.toLocaleDateString('en-US', { timeZone: 'America/Chicago', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const chicagoTime = currentTime.toLocaleTimeString('en-US', options);
+    document.getElementById('chicago-time').textContent = `${chicagoDate}, ${chicagoTime}`;
 }
 
 document.getElementById('toggle-format').addEventListener('click', function() {
